@@ -6,6 +6,12 @@ export default function Login() {
     email: "",
     password: "",
   });
+
+  // validation of every keyStroke
+
+const emailIsInvalid = enteredValues.email !== "" && !enteredValues.email.includes('@');
+// this makes false if @ is not present in email entered by user
+
   function handleInputChange(identifier, event) {
     setEnteredValues((prevValues) => ({
       ...prevValues,
@@ -33,6 +39,7 @@ export default function Login() {
             onChange={(event) => handleInputChange("email", event)}
             value={enteredValues.email}
           />
+          <div className="control-error">{emailIsInvalid && <p>Please enter a valid email address</p>}</div>
         </div>
 
         <div className="control no-margin">
